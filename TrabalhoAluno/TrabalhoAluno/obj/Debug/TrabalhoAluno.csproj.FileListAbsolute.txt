@@ -1,0 +1,6 @@
+c:\users\1713623\documents\visual studio 2015\Projects\TrabalhoAluno\TrabalhoAluno\bin\Debug\TrabalhoAluno.exe.config
+c:\users\1713623\documents\visual studio 2015\Projects\TrabalhoAluno\TrabalhoAluno\bin\Debug\TrabalhoAluno.exe
+c:\users\1713623\documents\visual studio 2015\Projects\TrabalhoAluno\TrabalhoAluno\bin\Debug\TrabalhoAluno.pdb
+c:\users\1713623\documents\visual studio 2015\Projects\TrabalhoAluno\TrabalhoAluno\obj\Debug\TrabalhoAluno.csprojResolveAssemblyReference.cache
+c:\users\1713623\documents\visual studio 2015\Projects\TrabalhoAluno\TrabalhoAluno\obj\Debug\TrabalhoAluno.exe
+c:\users\1713623\documents\visual studio 2015\Projects\TrabalhoAluno\TrabalhoAluno\obj\Debug\TrabalhoAluno.pdb
