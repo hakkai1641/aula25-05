@@ -12,5 +12,7 @@ namespace TrabalhoAluno
         public DateTime data_nascimento { get; set; }
         public String Matricula_Aluno { get; set; }
 
+        public List<Prova> Provas { get; set; } = new List<Prova>();
+
     }
 }

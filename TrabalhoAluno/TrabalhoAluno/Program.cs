@@ -16,6 +16,7 @@ namespace TrabalhoAluno
             DateTime dataInicial = new DateTime(1990, 01, 01);
             DateTime dataFinal = DateTime.Now.AddYears(-16);
             TimeSpan tempo = (dataFinal - dataInicial);
+            String[] Materias = new string[] { "Arquitetura de Software", "Desenvolvimento de Sistemas em C#", "Banco de Dados" };
             while (total --> 0)
             {
                 Aluno aluno = new Aluno();
@@ -24,15 +25,39 @@ namespace TrabalhoAluno
                 aluno.data_nascimento = dataInicial.AddDays(r.Next((int)tempo.TotalDays));
 
                 alunos.Add(aluno);
+                
+                foreach (var Materia in Materias)
+                {
+                    int totalProvas = 10;
+                    while(totalProvas -- > 0)
+                    {
+                        Prova p = new Prova();
+                        p.Materia = Materia;
+                        p.Nota = r.Next(9) + r.NextDouble();
+                        aluno.Provas.Add(p);
+                    }
+                }
 
             }
+            #region"LINQ"
+            var maioresDe18 = from a in alunos where (DateTime.Now - a.data_nascimento).TotalDays > (365 * 18) orderby a.nome ascending select a.nome;
+            var maioresDe18Ordenado = from a in alunos where (DateTime.Now - a.data_nascimento).TotalDays > (365 * 18) orderby a.nome ascending select new { Nome = a.nome, Idade = DateTime.Now - a.data_nascimento};
+            var provas = from a in alunos where (DateTime.Now - a.data_nascimento).TotalDays > (365 * 18) select a.Provas;
+            #endregion
 
-            var maioresDe18 = from a in alunos where (DateTime.Now - a.data_nascimento).TotalDays > (365 * 18) select a;
+            #region "LAMBDA"
+            var maioresDe18Lambda = alunos.Where(a => (DateTime.Now - a.data_nascimento).TotalDays > (365 * 18)).Select(a => a.nome);
+            var ProvasLambda = alunos.Where(a => (DateTime.Now - a.data_nascimento).TotalDays > (365 * 18)).SelectMany(a => a.Provas).GroupBy(p => p.Materia);
+            #endregion
 
-            foreach (Aluno m in maioresDe18)
+            foreach (String nome in maioresDe18)
             {
-                Console.WriteLine("Alunos maiores de 18: " + m.nome);
-
+                Console.WriteLine("Alunos maiores de 18: " + nome);
+                
+            }
+            foreach (var a in maioresDe18Ordenado)
+            {
+                Console.WriteLine("Alunos maiores de 18 ordenados por idade: " + a.Idade);
             }
 
             Console.ReadKey();
